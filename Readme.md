@@ -1,4 +1,4 @@
-# MicroServ Platform | Modular Microservice Deployment & Management
+# MicroServ: Modular Microservice Deployment & Management
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 [![Tech Stack](https://img.shields.io/badge/Tech-Flask%2C%20React%2C%20Docker-blue)](#technologies)
@@ -54,8 +54,11 @@ MicroServ is the **central control plane** for managing the deployment, scaling,
 
 The main management dashboard is accessible through the Nginx gateway:
 
-**Local URL:** `http://localhost:1500`
+**Local URL:** `http://msrv.local.com`
 **Remote URL:** `https://msrv.domain.com`
+
+For local, ensure subdomains for msrv and services are registered in hosts file
+For remote, ensure subdomains are registered to the server ip
 
 ### Using the CLI (Flask Backend)
 
