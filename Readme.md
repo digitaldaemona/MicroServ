@@ -22,8 +22,9 @@ MicroServ is the **central control plane** for managing the deployment, scaling,
 
 ### Prerequisites
 
-* **Docker** (Installed and running with sufficient resources)
+* **Python**
 * **Git**
+* **Docker** (Installed and running with sufficient resources)
 * **Docker Compose**
 
 ### Installation and Setup
@@ -34,13 +35,26 @@ MicroServ is the **central control plane** for managing the deployment, scaling,
     cd MicroServ
     ```
 
-2.  **Build and Run Core Services:**
-    *(This brings up the Nginx gateway, Flask backend, and React frontend.)*
+2.  **Install CLI & IDE dependencies:**
     ```bash
-    ???
+    ./setup.sh
+    .venv/bin/activate
     ```
 
-3.  **Verify Setup:**
+3.  **Create .env with server config:**
+    ```bash
+    SSH_USER={user}
+    SSH_HOST={ip}
+    PEM_KEY_PATH={pem_file_path}
+    ```
+
+3.  **Build and Run Core Services:**
+    *(This brings up the dev stack: Nginx gateway, Flask backend, React frontend, Postgres DB.)*
+    ```bash
+    ./msrv.py up
+    ```
+
+4.  **Verify Setup:**
     *(This verifies msrv is setup and what resource limits it has.)*
     ```bash
     ???
