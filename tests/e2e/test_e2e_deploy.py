@@ -1,0 +1,1 @@
+# Cypress/Playwright tests simulating browser interaction
