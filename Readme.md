@@ -11,7 +11,7 @@
 MicroServ is the **central control plane** for managing the deployment, scaling, monitoring, and logging of all other microservices in the ecosystem. It demonstrates **DevOps principles** and **resource orchestration** by interacting directly with the Docker Engine API.
 
 ### Key Features
-* **Deployment:** Launch and terminate microservice containers via CLI or UI.
+* **Deployment:** Launch and terminate microservice containers via UI.
 * **Resource Management:** View current CPU/RAM usage and set resource limits/reservations for running containers.
 * **Observability:** Centralized access to structured logs, service health status, and key Prometheus metrics.
 * **API:** Flask backend with a dedicated API for managing the Docker environment.
@@ -35,31 +35,6 @@ MicroServ is the **central control plane** for managing the deployment, scaling,
     cd MicroServ
     ```
 
-2.  **Install CLI & IDE dependencies:**
-    ```bash
-    ./setup.sh
-    .venv/bin/activate
-    ```
-
-3.  **Create .env with server config:**
-    ```bash
-    SSH_USER={user}
-    SSH_HOST={ip}
-    PEM_KEY_PATH={pem_file_path}
-    ```
-
-3.  **Build and Run Core Services:**
-    *(This brings up the dev stack: Nginx gateway, Flask backend, React frontend, Postgres DB.)*
-    ```bash
-    ./msrv.py up
-    ```
-
-4.  **Verify Setup:**
-    *(This verifies msrv is setup and what resource limits it has.)*
-    ```bash
-    ???
-    ```
-
 ---
 
 ## Usage
@@ -68,40 +43,21 @@ MicroServ is the **central control plane** for managing the deployment, scaling,
 
 The main management dashboard is accessible through the Nginx gateway:
 
-**Local URL:** `http://msrv.local.com`
-**Remote URL:** `https://msrv.domain.com`
+**URL:** `https://msrv.domain.com`
 
-For local, ensure subdomains for msrv and services are registered in hosts file
-For remote, ensure subdomains are registered to the server ip
-
-### Using the CLI (Flask Backend)
-
-While management and service removal is done using the frontend, deploying local code is done through the cli:
-
-1.  **Deploy a new service:**
-    ```bash
-    ???
-    ```
-
-2.  **Update an existing service:**
-    ```bash
-    ???
-    ```
-
-3.  **Remove msrv and all microservices:**
-    ```bash
-    ???
-    ```
+For local development, ensure domain and subdomains for msrv and services are registered in hosts file (e.g. `msrv.local.com`)
+For server deployment, ensure domain and subdomains are registered to the server ip
 
 ---
 
 ## Technologies Used <a name="technologies"></a>
 
 This project utilizes a multi-container microservice architecture built with:
-* **Backend API:** Python (Flask/Gevent)
 * **Orchestration:** Docker Compose / Docker Engine API
-* **Frontend UI:** React / JavaScript
 * **Database:** PostgreSQL
+* **Backend API:** Python (Flask) / Nginx
+* **Monitoring:** Loki Stack (Prometheus / Promtail / cAdvisor / Loki / Grafana)
+* **Frontend UI:** React / JavaScript
 
 ---
 
