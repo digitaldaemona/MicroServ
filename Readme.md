@@ -18,6 +18,74 @@ MicroServ is the **central control plane** for managing the deployment, scaling,
 
 ---
 
+## File Structure
+
+```
+msrv/
+├── .github/
+│   └── workflows/
+│       ├── backend-ci-cd.yml          # Build & push backend images
+│       ├── frontend-ci-cd.yml         # Build & push frontend images
+│       └── test.yml                   # Run tests on PR
+│
+├── backend/
+│   ├── Dockerfile                     # Multi-stage: dev & prod targets
+│   ├── requirements.txt
+│   ├── src/
+│   │   ├── __init__.py
+│   │   ├── main.py                    # Flask app entry
+│   │   ├── api/                       # API routes
+│   │   └── services/                  # Docker socket logic
+│   └── tests/
+│
+├── frontend/
+│   ├── Dockerfile                     # Multi-stage: build & serve
+│   ├── package.json
+│   ├── src/
+│   │   ├── App.jsx                    # Management UI
+│   │   └── components/
+│   └── public/
+│
+├── config/
+│   ├── nginx/
+│   │   ├── nginx.conf                 # Main config
+│   │   ├── dev.conf                   # Dev-specific overrides
+│   │   └── prod.conf                  # Prod with rate limiting
+│   ├── postgres/
+│   │   ├── postgresql.conf            # Tuned for 200MB limit
+│   │   └── init.sql                   # Schema initialization
+│   └── prometheus/
+│       └── prometheus.yml             # Scrape configs
+│
+├── cli/
+│   ├── setup.py                       # Click CLI package
+│   ├── msrv/
+│   │   ├── __init__.py
+│   │   ├── cli.py                     # Main CLI entry (deploy/update/remove)
+│   │   ├── commands/
+│   │   │   ├── deploy.py              # Deploy logic
+│   │   │   ├── update.py              # Update logic
+│   │   │   └── remove.py              # Cleanup logic
+│   │   ├── templates/
+│   │   │   ├── docker-compose.dev.yml
+│   │   │   └── docker-compose.prod.yml
+│   │   └── utils/
+│   │       ├── docker_client.py       # Docker API wrapper
+│   │       └── remote_ssh.py          # Remote deployment via SSH
+│   └── README.md
+│
+├── docker-compose.dev.yml             # Local development stack
+├── docker-compose.prod.yml            # Production stack template
+├── .env.example                       # Environment variables template
+├── .dockerignore
+├── README.md                          # Project overview
+└── docs/
+    ├── architecture.md                # System design
+    └── deployment.md                  # Deployment guide
+```
+
+---
+
 ## Getting Started (Local Development)
 
 ### Prerequisites
@@ -45,8 +113,7 @@ The main management dashboard is accessible through the Nginx gateway:
 
 **URL:** `https://msrv.domain.com`
 
-For local development, ensure domain and subdomains for msrv and services are registered in hosts file (e.g. `msrv.local.com`)
-For server deployment, ensure domain and subdomains are registered to the server ip
+For local development, ensure domain and subdomains for msrv and services are registered in hosts file (e.g. `msrv.local.com`). For server deployment, ensure domain and subdomains are registered to the server ip.
 
 ---
 
