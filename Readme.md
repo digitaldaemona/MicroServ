@@ -25,8 +25,7 @@ msrv/
 ├── .github/
 │   └── workflows/
 │       ├── backend-ci-cd.yml          # Build & push backend images
-│       ├── frontend-ci-cd.yml         # Build & push frontend images
-│       └── test.yml                   # Run tests on PR
+│       └── frontend-ci-cd.yml         # Build & push frontend images
 │
 ├── backend/
 │   ├── Dockerfile                     # Multi-stage: dev & prod targets
@@ -42,46 +41,38 @@ msrv/
 │   ├── Dockerfile                     # Multi-stage: build & serve
 │   ├── package.json
 │   ├── src/
-│   │   ├── App.jsx                    # Management UI
+│   │   ├── app.jsx                    # Management UI
 │   │   └── components/
 │   └── public/
 │
 ├── config/
 │   ├── nginx/
 │   │   ├── nginx.conf                 # Main config
-│   │   ├── dev.conf                   # Dev-specific overrides
-│   │   └── prod.conf                  # Prod with rate limiting
-│   ├── postgres/
-│   │   ├── postgresql.conf            # Tuned for 200MB limit
-│   │   └── init.sql                   # Schema initialization
-│   └── prometheus/
-│       └── prometheus.yml             # Scrape configs
+│   └── postgres/
+│       ├── postgresql.conf            # Tuned for 200MB limit
+│       └── init.sql                   # Schema initialization
 │
 ├── cli/
 │   ├── setup.py                       # Click CLI package
-│   ├── msrv/
-│   │   ├── __init__.py
-│   │   ├── cli.py                     # Main CLI entry (deploy/update/remove)
-│   │   ├── commands/
-│   │   │   ├── deploy.py              # Deploy logic
-│   │   │   ├── update.py              # Update logic
-│   │   │   └── remove.py              # Cleanup logic
-│   │   ├── templates/
-│   │   │   ├── docker-compose.dev.yml
-│   │   │   └── docker-compose.prod.yml
-│   │   └── utils/
-│   │       ├── docker_client.py       # Docker API wrapper
-│   │       └── remote_ssh.py          # Remote deployment via SSH
-│   └── README.md
+│   └── msrv/
+│       ├── __init__.py
+│       ├── cli.py                     # Main CLI entry (deploy/update/remove)
+│       ├── commands/
+│       │   ├── deploy.py              # Deploy logic
+│       │   └── remove.py              # Cleanup logic
+│       ├── templates/
+│       │   ├── docker-compose.dev.yml
+│       │   └── docker-compose.prod.yml
+│       └── utils/
+│           ├── docker_client.py       # Docker API wrapper
+│           └── remote_ssh.py          # Remote deployment via SSH
 │
-├── docker-compose.dev.yml             # Local development stack
-├── docker-compose.prod.yml            # Production stack template
 ├── .env.example                       # Environment variables template
 ├── .dockerignore
+├── .gitignore
 ├── README.md                          # Project overview
-└── docs/
-    ├── architecture.md                # System design
-    └── deployment.md                  # Deployment guide
+├── LICENSE
+└── CHANGELOG.md
 ```
 
 ---
